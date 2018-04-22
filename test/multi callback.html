@@ -1,0 +1,36 @@
+<!DOCHTML>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>multiple callback</title>
+    </head>
+
+    <body>
+        <script type="text/javascript" src="../dist/evt.js"></script>
+        <script type="text/javascript">
+            const signal = new evt.Signal();
+            signal.on('THE_QUEUE', [
+                (queue, step) => {
+                    console.log(step);
+                    setTimeout(() => {
+                        queue.next('step1');
+                    }, 1000);
+                },
+                (queue, step) => {
+                    console.log(step);
+                    setTimeout(() => {
+                        queue.next('step2');
+                    }, 1000);
+                },
+                (queue, step) => {
+                    console.log(step);
+                }
+            ]);
+            signal.emit('THE_QUEUE', 'step0');
+        </script>
+    </body>
+
+</html>
