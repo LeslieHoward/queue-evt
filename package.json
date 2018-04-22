@@ -1,0 +1,25 @@
+{
+	"name": "evt",
+	"version": "0.1.0",
+	"main": "evt.js",
+	"author": "leslie",
+	"license": "MIT",
+	"scripts": {
+		"build": "cross-env NODE_ENV=production webpack --progress --color"
+	},
+	"devDependencies": {
+		"babel-cli": "^6.26.0",
+		"babel-core": "^6.26.0",
+		"babel-loader": "^7.1.4",
+		"babel-plugin-transform-runtime": "^6.23.0",
+		"babel-preset-env": "^1.6.1",
+		"babel-preset-stage-0": "^6.24.1",
+		"cross-env": "^5.1.4",
+		"uglifyjs-webpack-plugin": "^1.2.4",
+		"webpack": "3.11.0"
+	},
+	"dependencies": {
+		"babel-polyfill": "^6.26.0",
+		"babel-runtime": "^6.26.0"
+	}
+}
