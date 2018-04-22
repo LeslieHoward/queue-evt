@@ -11,6 +11,7 @@ If you want to create an controlable function queue, you can do like this:
   const queue = new evt.FnQueue();
   
   // add functions to queue
+  
   queue
     .add(() => {
         console.log('this is the step0');
@@ -21,6 +22,7 @@ If you want to create an controlable function queue, you can do like this:
     });
     
  // then functions is executed in the order of addition 
+ 
  queue.fire();
  
 You can also delete or skip one of the functions
