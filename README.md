@@ -2,6 +2,9 @@
 
 The project includes two modules: function-queue-control and publish-subscribe
 
+usage in html: <script src="your project path/evt.min.js">
+usage in react: import evt from 'evt'; // or introduce one of the modules: import { FnQueue } from 'evt'; 
+
 # usage: function-queue-control
 
 If you want to create an controlable function queue, you can do like this:
