@@ -1,25 +1,37 @@
 {
-	"name": "evt",
-	"version": "0.1.0",
-	"main": "evt.js",
-	"author": "leslie",
-	"license": "MIT",
-	"scripts": {
-		"build": "cross-env NODE_ENV=production webpack --progress --color"
-	},
-	"devDependencies": {
-		"babel-cli": "^6.26.0",
-		"babel-core": "^6.26.0",
-		"babel-loader": "^7.1.4",
-		"babel-plugin-transform-runtime": "^6.23.0",
-		"babel-preset-env": "^1.6.1",
-		"babel-preset-stage-0": "^6.24.1",
-		"cross-env": "^5.1.4",
-		"uglifyjs-webpack-plugin": "^1.2.4",
-		"webpack": "3.11.0"
-	},
-	"dependencies": {
-		"babel-polyfill": "^6.26.0",
-		"babel-runtime": "^6.26.0"
-	}
+  "author": "leslie",
+  "description": "a subscribe-publish library",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-add-module-exports": "^1.0.0",
+    "babel-plugin-syntax-class-properties": "^6.13.0",
+    "babel-plugin-transform-export-extensions": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "clean-webpack-plugin": "^0.1.19",
+    "cross-env": "^5.1.4",
+    "html-webpack-plugin": "^3.2.0",
+    "uglifyjs-webpack-plugin": "^1.2.4",
+    "webpack": "3.12.0",
+    "webpack-dev-server": "^2.11.2"
+  },
+  "keywords": [
+    "queue",
+    "publish",
+    "subscribe"
+  ],
+  "license": "MIT",
+  "main": "dist/evt.js",
+  "name": "queue-evt",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LeslieHoward/evt.git"
+  },
+  "scripts": {
+    "build": "cross-env NODE_ENV=production webpack  --progress --colors"
+  },
+  "version": "0.0.5"
 }
