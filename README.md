@@ -1,18 +1,16 @@
 # evt
 
-The project includes two modules: function-queue-control and publish-subscribe
+本项目包含两个模块: FnQueue（任务队列） 和 Signal（发布订阅）
 
-usage in html: <script src="your project path/evt.min.js">
+在HTML中引用: <script src="your project path/evt.min.js">
 
-usage in react: import evt from 'evt'; // or introduce one of the modules: import { FnQueue } from 'evt'; 
+在React中引用: import evt from 'evt'; // 或者只引用其中一个模块: import { FnQueue } from 'evt'; 
 
-# usage: function-queue-control
-
-If you want to create an controlable function queue, you can do like this:
+# 用法: FnQueue
 
     const queue = new evt.FnQueue();
   
-    // add functions to queue
+    // 添加任务到队列中
   
     queue.add(() => {
         console.log('this is the step0');
@@ -23,11 +21,11 @@ If you want to create an controlable function queue, you can do like this:
         console.log(step1_params);
     });
     
-    // then functions is executed in the order of addition 
+    // 按添加顺序执行这个任务队列 
  
     queue.fire();
  
-You can also delete or skip one of the functions
+可以删除或者跳过任务
 
     function step1(step1_params) {
         // ...
@@ -40,21 +38,21 @@ You can also delete or skip one of the functions
     
     .add(step1);
     
-    queue.remove('step0').remove(step1);   // or queue.remove(['step0', step1]);
+    queue.remove('step0').remove(step1);   // 或者是： queue.remove(['step0', step1]);
   
-More examples please see the test folder
+更多demo参考demo文件夹
 
-# usage: publish-subscription
+# 用法: Signal
 
-    // initial an instance
+    // 实例化
     const signal = new evt.Signal();
     
-    // then add a subscription
+    // 添加一个订阅
     signal.on('GET_SOME_DATA', function(queue, data) {
         console.log('the data is: ', data);
     });
     
-    // or add a queue to handle the subscription
+    // 或者是添加一个队列来处理订阅
     signal.on('GET_SOME_DATA', [
         function(queue, data) {
             console.log('the data is: ', data);
@@ -66,7 +64,7 @@ More examples please see the test folder
         }
     ]);
     
-    // release the event: GET_SOME_DATA
+    // 发布订阅: GET_SOME_DATA
     new Promise(resolve => {
         // emulate to fetch data
         setTimeout(() => {
