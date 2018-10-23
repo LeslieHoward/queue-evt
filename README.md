@@ -1,5 +1,13 @@
 # evt
 
+安装：
+
+npm install queue-evt --save
+
+or 
+
+yarn add queue-evt
+
 本项目包含两个模块: FnQueue（任务队列） 和 Signal（发布订阅）
 
 在HTML中引用: <script src="your project path/evt.min.js">
