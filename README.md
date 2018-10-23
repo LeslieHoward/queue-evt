@@ -6,9 +6,13 @@ npm install queue-evt --save 或者 yarn add queue-evt
 
 本项目包含两个模块: FnQueue（任务队列） 和 Signal（发布订阅）
 
-在HTML中引用: <script src="your project path/evt.min.js">
+在HTML中引用: 
 
-在React中引用: import evt from 'evt'; // 或者只引用其中一个模块: import { FnQueue } from 'evt'; 
+    <script src="your project path/evt.min.js">
+
+在React中引用: 
+
+    import evt from 'evt'; // 或者只引用其中一个模块: import {  FnQueue } from 'evt';
 
 # 用法: FnQueue
 
