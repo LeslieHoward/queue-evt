@@ -1,6 +1,6 @@
 # evt
 
-## 安装：
+安装：
 
 npm install queue-evt --save 或者 yarn add queue-evt
 
