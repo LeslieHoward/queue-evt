@@ -13,22 +13,25 @@
         <script type="text/javascript">
             const signal = new evt.Signal();
             signal.on('THE_QUEUE', [
-                (queue, step) => {
+                (step, queue) => {
                     console.log(step);
                     setTimeout(() => {
                         queue.next('step1');
                     }, 1000);
                 },
-                (queue, step) => {
+                (step, queue) => {
                     console.log(step);
                     setTimeout(() => {
                         queue.next('step2');
                     }, 1000);
                 },
-                (queue, step) => {
+                (step, queue) => {
                     console.log(step);
                 }
-            ]);
+            ], {
+                    autoExcute: false
+                });
+            console.log(signal);
             signal.emit('THE_QUEUE', 'step0');
         </script>
     </body>

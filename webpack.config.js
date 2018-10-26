@@ -76,11 +76,22 @@ function generateConfig(name) {
   };
   if (uglify) {
     insideConfig.plugins.push(
-      // 利用多线程提升打包速度
       new UglifyjsWebpackPlugin({
         uglifyOptions: {
-          minimize: true,
           compress: true
+        }
+      })
+    );
+  } else {
+    insideConfig.plugins.push(
+      new UglifyjsWebpackPlugin({
+        uglifyOptions: {
+          compress: false,
+          mangle: false,
+          output: {
+            beautify: true,
+            comments: false
+          }
         }
       })
     );

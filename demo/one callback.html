@@ -12,7 +12,7 @@
         <script type="text/javascript" src="../dist/evt.js"></script>
         <script type="text/javascript">
             const signal = new evt.Signal();
-            signal.on('GET_NAME', (queue, name) => {
+            signal.on('GET_NAME', name => {
                 console.log(name);
             });
             signal.emit('GET_NAME', 'leslie');

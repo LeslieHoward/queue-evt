@@ -1,11 +1,14 @@
 import utils from './utils';
 
 class FnQueue {
-  constructor() {
-    this.options = {
-      // 是否自动执行
-      autoExcute: false
-    };
+  constructor(props = {}) {
+    this.options = Object.assign(
+      {
+        // 是否自动执行
+        autoExcute: false
+      },
+      props
+    );
     this.queue = [];
     this.cursor = 0;
     this.add = this.add.bind(this);
@@ -16,8 +19,7 @@ class FnQueue {
   }
 
   add(fns, options = {}) {
-    let { token } = Object.assign(this.options, options);
-
+    let { token } = options;
     switch (utils.type(fns)) {
       case 'function':
         fns.token = token;
@@ -47,19 +49,16 @@ class FnQueue {
       options: { autoExcute }
     } = this;
     if (utils.notNull(this.queue)) {
-      // 取出队列第一个元素
       const fn = this.queue.shift();
       // 游标+1
       this.cursor++;
       // 开始执行
-      fn.apply(null, args);
-      // 执行之后添加到队列尾部
-      this.queue.push(fn);
+      fn.apply(null, [...args, this]);
       if (this.cursor < this.queue.length && autoExcute) {
         this.next(...args);
-      } else {
-        this.cursor = 0;
       }
+      // 执行之后添加到队列尾部
+      this.queue.push(fn);
     }
   }
 
@@ -91,7 +90,6 @@ class FnQueue {
           return !ids.includes(fn) && !ids.includes(fn.name) && !ids.includes(fn.token);
         });
         break;
-        F;
       }
       case 'function': {
         this.queue = this.queue.filter(fn => {
@@ -113,7 +111,7 @@ class FnQueue {
 
 /* 发布订阅 */
 class Signal {
-  constructor(props) {
+  constructor() {
     this.options = {
       // 是否自动执行
       autoExcute: true
@@ -128,7 +126,7 @@ class Signal {
 
   // 添加到目标列表
   add(queue, fns = [], options) {
-    queue = queue && queue.add ? queue : new FnQueue();
+    queue = queue && queue.add ? queue : new FnQueue(options);
     queue.add(fns, options);
     return queue;
   }
