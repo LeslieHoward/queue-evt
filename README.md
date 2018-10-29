@@ -79,7 +79,9 @@ npm install queue-evt --save 或者 yarn add queue-evt
         function(processed_data, queue) {
             console.log(processed_data);
         }
-    ]);
+    ], {
+        autoExcute: false
+    });
 
     // 发布订阅: GET_SOME_DATA
     new Promise(resolve => {
