@@ -19,9 +19,11 @@
     "webpack-dev-server": "^2.11.2"
   },
   "keywords": [
-    "queue",
+    "javascript",
     "publish",
-    "subscribe"
+    "subscribe",
+    "pub-sub",
+    "queue"
   ],
   "license": "MIT",
   "main": "dist/evt.js",
