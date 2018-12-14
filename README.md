@@ -8,7 +8,7 @@ npm install queue-evt --save 或者 yarn add queue-evt
 
 在 HTML 中引用:
 
-    <script src="your project path/evt.min.js">
+    <script src="your project path/index.min.js">
 
 用 import 或者 require 方式进行引用:
 
