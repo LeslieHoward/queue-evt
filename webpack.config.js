@@ -16,7 +16,7 @@ const SOURCE_PATH = path.resolve(__dirname, 'src');
 const DIST_PATH = path.resolve(ROOT_PATH, 'dist');
 
 const FILE_MATCHER = /([^\/]+)\.(js)$/i;
-const FILE_POOL = ['evt'];
+const FILE_POOL = ['index'];
 
 /*------------------------------------------------ entry -----------------------------------------------------*/
 
@@ -99,7 +99,7 @@ function generateConfig(name) {
   return insideConfig;
 }
 
-['evt', 'evt.min'].forEach(function(key) {
+['index', 'index.min'].forEach(function(key) {
   config.push(generateConfig(key));
 });
 
