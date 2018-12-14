@@ -35,5 +35,5 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack  --progress --colors"
   },
-  "version": "0.1.4"
+  "version": "0.1.5"
 }
