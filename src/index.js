@@ -1,14 +1,11 @@
 import utils from './utils';
 
 class FnQueue {
-  constructor(props = {}) {
-    this.options = Object.assign(
-      {
-        // 是否自动执行
-        autoExcute: false
-      },
-      props
-    );
+  constructor() {
+    this.options = {
+      // 是否自动执行
+      autoExcute: false
+    };
     this.queue = [];
     this.cursor = 0;
     this.add = this.add.bind(this);
@@ -19,7 +16,8 @@ class FnQueue {
   }
 
   add(fns, options = {}) {
-    let { token } = options;
+    let { token } = Object.assign(this.options, options);
+
     switch (utils.type(fns)) {
       case 'function':
         fns.token = token;
@@ -49,16 +47,19 @@ class FnQueue {
       options: { autoExcute }
     } = this;
     if (utils.notNull(this.queue)) {
+      // 取出队列第一个元素
       const fn = this.queue.shift();
       // 游标+1
       this.cursor++;
       // 开始执行
-      fn.apply(null, [...args, this]);
-      if (this.cursor < this.queue.length && autoExcute) {
-        this.next(...args);
-      }
+      fn.apply(null, args);
       // 执行之后添加到队列尾部
       this.queue.push(fn);
+      if (this.cursor < this.queue.length && autoExcute) {
+        this.next(...args);
+      } else {
+        this.cursor = 0;
+      }
     }
   }
 
@@ -111,7 +112,7 @@ class FnQueue {
 
 /* 发布订阅 */
 class Signal {
-  constructor() {
+  constructor(props) {
     this.options = {
       // 是否自动执行
       autoExcute: true
@@ -126,7 +127,7 @@ class Signal {
 
   // 添加到目标列表
   add(queue, fns = [], options) {
-    queue = queue && queue.add ? queue : new FnQueue(options);
+    queue = queue && queue.add ? queue : new FnQueue();
     queue.add(fns, options);
     return queue;
   }
