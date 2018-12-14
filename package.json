@@ -26,7 +26,7 @@
     "queue"
   ],
   "license": "MIT",
-  "main": "dist/evt.js",
+  "main": "dist/index.js",
   "name": "queue-evt",
   "repository": {
     "type": "git",
