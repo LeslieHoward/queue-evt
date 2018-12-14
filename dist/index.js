@@ -100,11 +100,10 @@
         }
         var FnQueue = function() {
             function FnQueue() {
-                var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
                 _classCallCheck(this, FnQueue);
-                this.options = Object.assign({
+                this.options = {
                     autoExcute: false
-                }, props);
+                };
                 this.queue = [];
                 this.cursor = 0;
                 this.add = this.add.bind(this);
@@ -118,7 +117,7 @@
                 value: function add(fns) {
                     var _this = this;
                     var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-                    var token = options.token;
+                    var _Object$assign = Object.assign(this.options, options), token = _Object$assign.token;
                     switch (_utils2.default.type(fns)) {
                       case "function":
                         fns.token = token;
@@ -155,11 +154,13 @@
                         for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
                             args[_key] = arguments[_key];
                         }
-                        fn.apply(null, [].concat(args, [ this ]));
+                        fn.apply(null, args);
+                        this.queue.push(fn);
                         if (this.cursor < this.queue.length && autoExcute) {
                             this.next.apply(this, args);
+                        } else {
+                            this.cursor = 0;
                         }
-                        this.queue.push(fn);
                     }
                 }
             }, {
@@ -218,7 +219,7 @@
             return FnQueue;
         }();
         var Signal = function() {
-            function Signal() {
+            function Signal(props) {
                 _classCallCheck(this, Signal);
                 this.options = {
                     autoExcute: true
@@ -235,7 +236,7 @@
                 value: function add(queue) {
                     var fns = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
                     var options = arguments[2];
-                    queue = queue && queue.add ? queue : new FnQueue(options);
+                    queue = queue && queue.add ? queue : new FnQueue();
                     queue.add(fns, options);
                     return queue;
                 }
