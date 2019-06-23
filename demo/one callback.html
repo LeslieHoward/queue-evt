@@ -1,22 +1,21 @@
 <!DOCHTML>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>one callback</title>
+  </head>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>on callback</title>
-    </head>
-
-    <body>
-        <script type="text/javascript" src="../dist/evt.js"></script>
-        <script type="text/javascript">
-            const signal = new evt.Signal();
-            signal.on('GET_NAME', name => {
-                console.log(name);
-            });
-            signal.emit('GET_NAME', 'leslie');
-        </script>
-    </body>
-
+  <body>
+    <!-- if current environment support es6 --> <script type="text/javascript" src="../dist/evt.min.js"></script> -->
+    <script type="text/javascript" src="../dist/evt.es5.min.js"></script>
+    <script type="text/javascript">
+      const signal = new evt.Signal();
+      signal.on('GET_NAME', function(name) {
+        console.log(name);
+      });
+      signal.emit('GET_NAME', 'leslie');
+    </script>
+  </body>
 </html>
