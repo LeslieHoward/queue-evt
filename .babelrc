@@ -1,9 +1,0 @@
-{
-  "presets": ["env"],
-  "plugins": [
-    "syntax-class-properties",
-    "transform-object-rest-spread",
-    "transform-export-extensions",
-    "add-module-exports"
-  ]
-}
