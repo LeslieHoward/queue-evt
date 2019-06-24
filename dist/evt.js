@@ -1,392 +1,304 @@
-(function e(t, n) {
-  if (typeof exports === "object" && typeof module === "object") module.exports = n(); else if (typeof define === "function" && define.amd) define([], n); else if (typeof exports === "object") exports["evt"] = n(); else t["evt"] = n();
-})(window, function() {
-  return function(e) {
-    var t = {};
-    function n(r) {
-      if (t[r]) {
-        return t[r].exports;
-      }
-      var i = t[r] = {
-        i: r,
-        l: false,
-        exports: {}
-      };
-      e[r].call(i.exports, i, i.exports, n);
-      i.l = true;
-      return i.exports;
-    }
-    n.m = e;
-    n.c = t;
-    n.d = function(e, t, r) {
-      if (!n.o(e, t)) {
-        Object.defineProperty(e, t, {
-          enumerable: true,
-          get: r
-        });
-      }
-    };
-    n.r = function(e) {
-      if (typeof Symbol !== "undefined" && Symbol.toStringTag) {
-        Object.defineProperty(e, Symbol.toStringTag, {
-          value: "Module"
-        });
-      }
-      Object.defineProperty(e, "__esModule", {
-        value: true
-      });
-    };
-    n.t = function(e, t) {
-      if (t & 1) e = n(e);
-      if (t & 8) return e;
-      if (t & 4 && typeof e === "object" && e && e.__esModule) return e;
-      var r = Object.create(null);
-      n.r(r);
-      Object.defineProperty(r, "default", {
-        enumerable: true,
-        value: e
-      });
-      if (t & 2 && typeof e != "string") for (var i in e) n.d(r, i, function(t) {
-        return e[t];
-      }.bind(null, i));
-      return r;
-    };
-    n.n = function(e) {
-      var t = e && e.__esModule ? function t() {
-        return e["default"];
-      } : function t() {
-        return e;
-      };
-      n.d(t, "a", t);
-      return t;
-    };
-    n.o = function(e, t) {
-      return Object.prototype.hasOwnProperty.call(e, t);
-    };
-    n.p = "/dist/";
-    return n(n.s = 4);
-  }([ function(e, t) {
-    function n(e, t) {
-      if (!(e instanceof t)) {
-        throw new TypeError("Cannot call a class as a function");
-      }
-    }
-    e.exports = n;
-  }, function(e, t) {
-    function n(e, t) {
-      for (var n = 0; n < t.length; n++) {
-        var r = t[n];
-        r.enumerable = r.enumerable || false;
-        r.configurable = true;
-        if ("value" in r) r.writable = true;
-        Object.defineProperty(e, r.key, r);
-      }
-    }
-    function r(e, t, r) {
-      if (t) n(e.prototype, t);
-      if (r) n(e, r);
-      return e;
-    }
-    e.exports = r;
-  }, function(e, t, n) {
-    var r = n(5);
-    var i = n(6);
-    var u = n(7);
-    function o(e) {
-      return r(e) || i(e) || u();
-    }
-    e.exports = o;
-  }, function(e, t, n) {
-    var r = n(8);
-    function i(e) {
-      for (var t = 1; t < arguments.length; t++) {
-        var n = arguments[t] != null ? arguments[t] : {};
-        var i = Object.keys(n);
-        if (typeof Object.getOwnPropertySymbols === "function") {
-          i = i.concat(Object.getOwnPropertySymbols(n).filter(function(e) {
-            return Object.getOwnPropertyDescriptor(n, e).enumerable;
-          }));
-        }
-        i.forEach(function(t) {
-          r(e, t, n[t]);
-        });
-      }
-      return e;
-    }
-    e.exports = i;
-  }, function(e, t, n) {
-    e.exports = n(9);
-  }, function(e, t) {
-    function n(e) {
-      if (Array.isArray(e)) {
-        for (var t = 0, n = new Array(e.length); t < e.length; t++) {
-          n[t] = e[t];
-        }
-        return n;
-      }
-    }
-    e.exports = n;
-  }, function(e, t) {
-    function n(e) {
-      if (Symbol.iterator in Object(e) || Object.prototype.toString.call(e) === "[object Arguments]") return Array.from(e);
-    }
-    e.exports = n;
-  }, function(e, t) {
-    function n() {
-      throw new TypeError("Invalid attempt to spread non-iterable instance");
-    }
-    e.exports = n;
-  }, function(e, t) {
-    function n(e, t, n) {
-      if (t in e) {
-        Object.defineProperty(e, t, {
-          value: n,
-          enumerable: true,
-          configurable: true,
-          writable: true
-        });
-      } else {
-        e[t] = n;
-      }
-      return e;
-    }
-    e.exports = n;
-  }, function(e, t, n) {
-    "use strict";
-    n.r(t);
-    var r = n(2);
-    var i = n.n(r);
-    var u = n(3);
-    var o = n.n(u);
-    var s = n(0);
-    var a = n.n(s);
-    var f = n(1);
-    var c = n.n(f);
-    var l = {
-      type: function e(t) {
-        return Object.prototype.toString.call(t).slice(8, -1).toLowerCase();
-      },
-      isNull: function e(t) {
-        var n;
-        for (n in t) {
-          return false;
-        }
-        return true;
-      },
-      notNull: function e(t) {
-        return !l.isNull(t);
-      },
-      isArray: function e(t) {
-        return l.type(t) === "array";
-      },
-      isFunction: function e(t) {
-        return l.type(t) === "function";
-      },
-      uuid: function e() {
-        var t = new Date().getTime();
-        var e = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(e) {
-          var n = (t + Math.random() * 16) % 16 | 0;
-          t = Math.floor(t / 16);
-          return (e == "x" ? n : n & 3 | 8).toString(16);
-        });
-        return e;
-      }
-    };
-    var h = l;
-    n.d(t, "FnQueue", function() {
-      return d;
-    });
-    n.d(t, "Signal", function() {
-      return p;
-    });
-    var d = function() {
-      function e() {
-        a()(this, e);
-        this.options = {
-          autoExcute: false
-        };
-        this.queue = [];
-        this.cursor = 0;
-        this.add = this.add.bind(this);
-        this.next = this.next.bind(this);
-        this.skip = this.skip.bind(this);
-        this.fire = this.fire.bind(this);
-        this.clear = this.clear.bind(this);
-      }
-      c()(e, [ {
-        key: "add",
-        value: function e(t) {
-          var n = this;
-          var r = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-          var i = Object.assign(this.options, r), u = i.token;
-          switch (h.type(t)) {
-           case "function":
-            t.token = u;
-            this.queue.push(t);
-            break;
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+  typeof define === 'function' && define.amd ? define(['exports'], factory) :
+  (global = global || self, factory(global.evt = {}));
+}(this, function (exports) { 'use strict';
 
-           case "array":
-            t.map(function(e) {
-              n.add(e);
+  function _extends() {
+    _extends = Object.assign || function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+
+      return target;
+    };
+
+    return _extends.apply(this, arguments);
+  }
+
+  var utils = {
+    type: function type(o) {
+      return Object.prototype.toString.call(o).slice(8, -1).toLowerCase();
+    },
+    isNull: function isNull(o) {
+      var item;
+
+      for (item in o) {
+        return false;
+      }
+
+      return true;
+    },
+    notNull: function notNull(o) {
+      return !utils.isNull(o);
+    },
+    isArray: function isArray(o) {
+      return utils.type(o) === 'array';
+    },
+    isFunction: function isFunction(o) {
+      return utils.type(o) === 'function';
+    },
+    uuid: function uuid() {
+      var d = new Date().getTime();
+      var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        var r = (d + Math.random() * 16) % 16 | 0;
+        d = Math.floor(d / 16);
+        return (c == 'x' ? r : r & 0x3 | 0x8).toString(16);
+      });
+      return uuid;
+    }
+  };
+
+  var FnQueue =
+  /*#__PURE__*/
+  function () {
+    function FnQueue() {
+      this.options = {
+        // 是否自动执行
+        autoExcute: false
+      };
+      this.queue = [];
+      this.cursor = 0;
+      this.add = this.add.bind(this);
+      this.next = this.next.bind(this);
+      this.skip = this.skip.bind(this);
+      this.fire = this.fire.bind(this);
+      this.clear = this.clear.bind(this);
+    }
+
+    var _proto = FnQueue.prototype;
+
+    _proto.add = function add(fns, options) {
+      var _this = this;
+
+      if (options === void 0) {
+        options = {};
+      }
+
+      var _Object$assign = _extends(this.options, options),
+          token = _Object$assign.token;
+
+      switch (utils.type(fns)) {
+        case 'function':
+          fns.token = token;
+          this.queue.push(fns);
+          break;
+
+        case 'array':
+          fns.map(function (fn) {
+            _this.add(fn);
+          });
+          break;
+
+        default:
+          return;
+      }
+
+      return this;
+    };
+
+    _proto.skip = function skip(step) {
+      step = utils.isNull(step) ? 1 : +step;
+
+      while (step--) {
+        this.queue.shift();
+      }
+
+      return this;
+    };
+
+    _proto.next = function next() {
+      var autoExcute = this.options.autoExcute;
+
+      if (utils.notNull(this.queue)) {
+        // 取出队列第一个元素
+        var fn = this.queue.shift(); // 游标+1
+
+        this.cursor++; // 开始执行
+
+        for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+          args[_key] = arguments[_key];
+        }
+
+        fn.apply(null, args); // 执行之后添加到队列尾部
+
+        this.queue.push(fn);
+
+        if (this.cursor < this.queue.length && autoExcute) {
+          this.next.apply(this, args);
+        } else {
+          this.cursor = 0;
+        }
+      }
+    };
+
+    _proto.fire = function fire() {
+      this.cursor = 0;
+      return this.next.apply(this, arguments);
+    };
+
+    _proto.clear = function clear() {
+      this.queue = [];
+      return this;
+    };
+
+    _proto.remove = function remove(ids) {
+      var type = utils.type(ids);
+
+      if (!/function|string|array|undefined/.test(type)) {
+        return false;
+      } // 移除订阅内容
+
+
+      switch (type) {
+        case 'undefined':
+          {
+            this.queue = [];
+            break;
+          }
+
+        case 'array':
+          {
+            this.queue = this.queue.filter(function (fn) {
+              return !ids.includes(fn) && !ids.includes(fn.name) && !ids.includes(fn.token);
             });
             break;
+          }
 
-           default:
-            return;
+        case 'function':
+          {
+            this.queue = this.queue.filter(function (fn) {
+              return ids !== fn;
+            });
+            break;
           }
-          return this;
-        }
-      }, {
-        key: "skip",
-        value: function e(t) {
-          t = h.isNull(t) ? 1 : +t;
-          while (t--) {
-            this.queue.shift();
-          }
-          return this;
-        }
-      }, {
-        key: "next",
-        value: function e() {
-          var t = this.options.autoExcute;
-          if (h.notNull(this.queue)) {
-            var n = this.queue.shift();
-            this.cursor++;
-            for (var r = arguments.length, i = new Array(r), u = 0; u < r; u++) {
-              i[u] = arguments[u];
-            }
-            n.apply(null, i);
-            this.queue.push(n);
-            if (this.cursor < this.queue.length && t) {
-              this.next.apply(this, i);
-            } else {
-              this.cursor = 0;
-            }
-          }
-        }
-      }, {
-        key: "fire",
-        value: function e() {
-          this.cursor = 0;
-          return this.next.apply(this, arguments);
-        }
-      }, {
-        key: "clear",
-        value: function e() {
-          this.queue = [];
-          return this;
-        }
-      }, {
-        key: "remove",
-        value: function e(t) {
-          var n = h.type(t);
-          if (!/function|string|array|undefined/.test(n)) {
-            return false;
-          }
-          switch (n) {
-           case "undefined":
-            {
-              this.queue = [];
-              break;
-            }
 
-           case "array":
-            {
-              this.queue = this.queue.filter(function(e) {
-                return !t.includes(e) && !t.includes(e.name) && !t.includes(e.token);
-              });
-              break;
-            }
-
-           case "function":
-            {
-              this.queue = this.queue.filter(function(e) {
-                return t !== e;
-              });
-              break;
-            }
-
-           case "string":
-            {
-              this.queue = this.queue.filter(function(e) {
-                return t !== e.name && t !== e.token;
-              });
-              break;
-            }
+        case 'string':
+          {
+            this.queue = this.queue.filter(function (fn) {
+              return ids !== fn.name && ids !== fn.token;
+            });
+            break;
           }
-          return this;
-        }
-      } ]);
-      return e;
-    }();
-    var p = function() {
-      function e(t) {
-        a()(this, e);
-        this.options = {
-          autoExcute: true
-        };
-        this.stack = {};
-        this.cache = {};
-        this.add = this.add.bind(this);
-        this.on = this.on.bind(this);
-        this.emit = this.emit.bind(this);
-        this.remove = this.remove.bind(this);
       }
-      c()(e, [ {
-        key: "add",
-        value: function e(t) {
-          var n = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
-          var r = arguments.length > 2 ? arguments[2] : undefined;
-          t = t && t.add ? t : new d();
-          t.add(n, r);
-          return t;
-        }
-      }, {
-        key: "on",
-        value: function e() {
-          var t = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
-          var n = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
-          var r = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-          if (!/function|array/.test(h.type(n))) {
-            return this;
-          }
-          if (!this.stack[t]) {
-            this.stack[t] = {};
-          }
-          this.stack[t].queue = this.add(this.stack[t].queue, n, o()({}, this.options, r));
-          if (this.cache[t]) {
-            var u;
-            (u = this.stack[t].queue).fire.apply(u, i()(this.cache[t].params));
-            this.cache[t] = {};
-          }
-          return this;
-        }
-      }, {
-        key: "emit",
-        value: function e(t) {
-          for (var n = arguments.length, r = new Array(n > 1 ? n - 1 : 0), i = 1; i < n; i++) {
-            r[i - 1] = arguments[i];
-          }
-          if (this.stack[t]) {
-            var u;
-            (u = this.stack[t].queue).fire.apply(u, r);
-          } else {
-            this.cache[t] = {
-              params: r
-            };
-          }
-          return this;
-        }
-      }, {
-        key: "remove",
-        value: function e(t, n) {
-          if (this.stack[t]) {
-            this.stack[t].queue.remove(n);
-          }
-          return this;
-        }
-      } ]);
-      return e;
-    }();
-  } ]);
-});
+
+      return this;
+    };
+
+    return FnQueue;
+  }();
+  /* 发布订阅 */
+
+
+  var Signal =
+  /*#__PURE__*/
+  function () {
+    function Signal(props) {
+      this.options = {
+        // 是否自动执行
+        autoExcute: true
+      };
+      this.stack = {};
+      this.cache = {};
+      this.add = this.add.bind(this);
+      this.on = this.on.bind(this);
+      this.emit = this.emit.bind(this);
+      this.remove = this.remove.bind(this);
+    } // 添加到目标列表
+
+
+    var _proto2 = Signal.prototype;
+
+    _proto2.add = function add(queue, fns, options) {
+      if (fns === void 0) {
+        fns = [];
+      }
+
+      queue = queue && queue.add ? queue : new FnQueue();
+      queue.add(fns, options);
+      return queue;
+    } // 添加订阅
+    ;
+
+    _proto2.on = function on(id, fns, options) {
+      if (id === void 0) {
+        id = '';
+      }
+
+      if (fns === void 0) {
+        fns = [];
+      }
+
+      if (options === void 0) {
+        options = {};
+      }
+
+      // 判断参数类型
+      if (!/function|array/.test(utils.type(fns))) {
+        return this;
+      }
+
+      if (!this.stack[id]) {
+        this.stack[id] = {};
+      } // 生成队列
+
+
+      this.stack[id].queue = this.add(this.stack[id].queue, fns, _extends({}, this.options, options)); // 如果当前订阅的事件存在于缓存，则取出缓存中存放的信息
+
+      if (this.cache[id]) {
+        var _this$stack$id$queue;
+
+        (_this$stack$id$queue = this.stack[id].queue).fire.apply(_this$stack$id$queue, this.cache[id].params); // 清空对应缓存
+
+
+        this.cache[id] = {};
+      }
+
+      return this;
+    } // 发布事件
+    ;
+
+    _proto2.emit = function emit(id) {
+      for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+        args[_key2 - 1] = arguments[_key2];
+      }
+
+      // 1：事件存在则执行
+      if (this.stack[id]) {
+        var _this$stack$id$queue2;
+
+        (_this$stack$id$queue2 = this.stack[id].queue).fire.apply(_this$stack$id$queue2, args);
+      } else {
+        // 2：事件不存在则放入缓存列表
+        this.cache[id] = {
+          params: args
+        };
+      }
+
+      return this;
+    } // 移除订阅
+    ;
+
+    _proto2.remove = function remove(id, items) {
+      if (this.stack[id]) {
+        this.stack[id].queue.remove(items);
+      }
+
+      return this;
+    };
+
+    return Signal;
+  }();
+
+  exports.FnQueue = FnQueue;
+  exports.Signal = Signal;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
