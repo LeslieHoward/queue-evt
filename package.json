@@ -22,7 +22,8 @@
     "queue"
   ],
   "license": "MIT",
-  "main": "dist/evt.js",
+  "main": "dist/evt.cjs.js",
+  "module": "dist/evt.esm.js",
   "name": "queue-evt",
   "repository": {
     "type": "git",
@@ -31,5 +32,6 @@
   "scripts": {
     "build": "rollup -c config/rollup.config.js"
   },
+  "unpkg": "dist/evt.js",
   "version": "0.2.0"
 }
