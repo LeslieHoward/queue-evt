@@ -33,5 +33,5 @@
     "build": "rollup -c config/rollup.config.js"
   },
   "unpkg": "dist/evt.js",
-  "version": "0.2.0"
+  "version": "0.2.1"
 }
