@@ -81,7 +81,7 @@
         options = {};
       }
 
-      var _Object$assign = _extends(this.options, options),
+      var _Object$assign = Object.assign(this.options, options),
           token = _Object$assign.token;
 
       switch (utils.type(fns)) {
@@ -249,7 +249,7 @@
       } // 生成队列
 
 
-      this.stack[id].queue = this.add(this.stack[id].queue, fns, _extends({}, this.options, options)); // 如果当前订阅的事件存在于缓存，则取出缓存中存放的信息
+      this.stack[id].queue = this.add(this.stack[id].queue, fns, _extends({}, this.options, {}, options)); // 如果当前订阅的事件存在于缓存，则取出缓存中存放的信息
 
       if (this.cache[id]) {
         var _this$stack$id$queue;

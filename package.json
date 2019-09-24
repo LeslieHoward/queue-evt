@@ -1,18 +1,17 @@
 {
   "author": "leslie",
   "dependencies": {
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.15"
   },
   "description": "a subscribe-publish library",
   "devDependencies": {
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.5",
-    "@babel/plugin-transform-object-assign": "^7.2.0",
-    "@babel/preset-env": "^7.4.5",
-    "rollup": "^1.16.2",
+    "@babel/cli": "^7.6.2",
+    "@babel/core": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
+    "rollup": "^1.21.4",
     "rollup-plugin-babel": "^4.3.3",
-    "rollup-plugin-babel-minify": "^8.0.0",
-    "rollup-plugin-clear": "^2.0.7"
+    "rollup-plugin-clear": "^2.0.7",
+    "rollup-plugin-terser": "^5.1.2"
   },
   "keywords": [
     "javascript",
@@ -30,7 +29,7 @@
     "url": "https://github.com/LeslieHoward/evt.git"
   },
   "scripts": {
-    "build": "rollup -c config/rollup.config.js"
+    "build": "rollup -c rollup.config.js"
   },
   "unpkg": "dist/evt.js",
   "version": "0.2.1"
