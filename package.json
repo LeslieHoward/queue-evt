@@ -1,17 +1,17 @@
 {
   "author": "leslie",
   "dependencies": {
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.20"
   },
   "description": "a subscribe-publish library",
   "devDependencies": {
-    "@babel/cli": "^7.6.2",
-    "@babel/core": "^7.6.2",
-    "@babel/preset-env": "^7.6.2",
-    "rollup": "^1.21.4",
-    "rollup-plugin-babel": "^4.3.3",
+    "@babel/cli": "^7.12.13",
+    "@babel/core": "^7.12.13",
+    "@babel/preset-env": "^7.12.13",
+    "@rollup/plugin-babel": "^5.2.3",
+    "rollup": "^2.38.4",
     "rollup-plugin-clear": "^2.0.7",
-    "rollup-plugin-terser": "^5.1.2"
+    "rollup-plugin-terser": "^7.0.2"
   },
   "keywords": [
     "javascript",
@@ -32,5 +32,5 @@
     "build": "rollup -c rollup.config.js"
   },
   "unpkg": "dist/evt.js",
-  "version": "0.2.1"
+  "version": "0.2.2"
 }

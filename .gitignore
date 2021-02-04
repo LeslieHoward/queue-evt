@@ -7,5 +7,3 @@ yarn-error.log*
 .history/
 package-lock.json
 yarn.lock
-rollup.config.js
-.babelrc

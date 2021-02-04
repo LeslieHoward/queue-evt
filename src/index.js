@@ -150,7 +150,7 @@ class Signal {
     if (this.cache[id]) {
       this.stack[id].queue.fire(...this.cache[id].params);
       // 清空对应缓存
-      this.cache[id] = {};
+      this.cache[id] = null;
     }
 
     return this;
