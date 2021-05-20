@@ -1,24 +1,25 @@
 # evt
 
-安装：
+## prepare
 
-npm install queue-evt --save 或者 yarn add queue-evt
+run `npm install queue-evt --save` or `yarn add queue-evt`
 
-本项目包含两个模块: FnQueue（任务队列） 和 Signal（发布订阅）
+the library include two modules: FnQueue（for handling task queue）and Signal（publish-subscribe）
 
-在 HTML 中引用:
+### using in normal html page:
 
     <script src="your project path/index.min.js">
 
-用 import 或者 require 方式进行引用:
+### using by import or require
 
-    import evt from 'evt'; // 或者只引用其中一个模块: import {  FnQueue } from 'evt';
+    import evt from 'evt';
+    import { FnQueue } from 'evt';
 
-# 用法: FnQueue
+## usage: FnQueue
 
     const queue = new evt.FnQueue();
 
-添加任务
+### add tasks
 
     queue.add(() => {
         console.log('this is the step0');
@@ -27,10 +28,10 @@ npm install queue-evt --save 或者 yarn add queue-evt
         console.log(step1_params);
     });
 
-    // 按添加顺序执行任务队列
+    // the tasks will be performed in sequence
     queue.fire();
 
-删除任务
+### remove tasks
 
     function step1(step1_params) {
         // ...
@@ -41,15 +42,15 @@ npm install queue-evt --save 或者 yarn add queue-evt
         queue.next('the params of step1');
     }).add(step1);
 
-    queue.remove('step0').remove(step1); // 或者是：queue.remove(['step0', step1]);
+    queue.remove('step0').remove(step1); // or：queue.remove(['step0', step1]);
 
-跳过任务
+### skip the task
 
     function step1(step1_params) {
         // ...
     }
 
-    // 下面的 step1 函数将不会执行
+    // the function step1 will not be performed
     queue.add(step0 = () => {
         console.log('this is the step0');
         if(Math.floor(Math.random() * 100) % 2 == 0) {
@@ -57,19 +58,20 @@ npm install queue-evt --save 或者 yarn add queue-evt
         }
     }).add(step1);
 
-更多 demo 参考 demo 文件夹
+PS: get into demo folder to view more demo.
 
-# 用法: Signal
+## usage: Signal
 
-    // 实例化
     const signal = new evt.Signal();
 
-    // 添加一个订阅
+### add a subscription
+
     signal.on('GET_SOME_DATA', function(queue, data) {
         console.log('the data is: ', data);
     });
 
-    // 或者是添加一个队列来处理订阅
+### or add a queue of subscriptions
+
     signal.on('GET_SOME_DATA', [
         function(data, queue) {
             console.log('the data is: ', data);
@@ -83,9 +85,10 @@ npm install queue-evt --save 或者 yarn add queue-evt
         autoExcute: false
     });
 
-    // 发布订阅: GET_SOME_DATA
+### publish a subscription calling 'GET_SOME_DATA'
+
     new Promise(resolve => {
-        // emulate to fetch data
+        // emulate to fetching data
         setTimeout(() => {
             resolve({ name: 'Rolling Stone' });
         }, 2000);
