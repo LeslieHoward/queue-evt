@@ -6,11 +6,11 @@ run `npm install queue-evt --save` or `yarn add queue-evt`
 
 the library include two modules: FnQueue（for handling task queue）and Signal（publish-subscribe）
 
-### using in normal html page:
+**using in normal html page**
 
     <script src="your project path/index.min.js">
 
-### using by import or require
+**using by import or require**
 
     import evt from 'evt';
     import { FnQueue } from 'evt';
@@ -19,7 +19,7 @@ the library include two modules: FnQueue（for handling task queue）and Signal�
 
     const queue = new evt.FnQueue();
 
-### add tasks
+**add tasks**
 
     queue.add(() => {
         console.log('this is the step0');
@@ -31,7 +31,7 @@ the library include two modules: FnQueue（for handling task queue）and Signal�
     // the tasks will be performed in sequence
     queue.fire();
 
-### remove tasks
+**remove tasks**
 
     function step1(step1_params) {
         // ...
@@ -44,7 +44,7 @@ the library include two modules: FnQueue（for handling task queue）and Signal�
 
     queue.remove('step0').remove(step1); // or：queue.remove(['step0', step1]);
 
-### skip the task
+**skip the task**
 
     function step1(step1_params) {
         // ...
@@ -64,13 +64,13 @@ PS: get into demo folder to view more demo.
 
     const signal = new evt.Signal();
 
-### add a subscription
+**add a subscription**
 
     signal.on('GET_SOME_DATA', function(queue, data) {
         console.log('the data is: ', data);
     });
 
-### or add a queue of subscriptions
+**or add a queue of subscriptions**
 
     signal.on('GET_SOME_DATA', [
         function(data, queue) {
@@ -85,7 +85,7 @@ PS: get into demo folder to view more demo.
         autoExcute: false
     });
 
-### publish a subscription calling 'GET_SOME_DATA'
+**publish a subscription calling 'GET_SOME_DATA'**
 
     new Promise(resolve => {
         // emulate to fetching data
